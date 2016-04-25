@@ -1,0 +1,1236 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="/style.css"/>
+<title>Lookup Daily Limit</title>
+</head>
+
+<body topmargin="0">
+<!--Start of /_borders/nav/main-master.asp-->
+
+<script type='text/javaScript' src='/cgi-bin/lib.js'></script>
+
+<meta http-equiv="”refresh”" content="5" />
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/bootstrap-main-master.css" />
+
+<style type="text/css">
+    a:link.headertop {
+        color: #000;
+        text-decoration: none;
+    }
+
+    a:visited.headertop {
+        color: #000;
+        text-decoration: none;
+    }
+
+    a:hover.headertop {
+        text-decoration: none;
+        color: #0066ff;
+    }
+
+    a:active.headertop {
+        color: #000;
+        text-decoration: none;
+    }
+
+
+    a:link.white {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    a:visited.white {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    a:hover.white {
+        text-decoration: none;
+        color: #dedede;
+    }
+
+    a:active.white {
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+    .search {
+        font-size: 10pt;
+        background: url(/dm/images/img-searchbox.gif) no-repeat;
+        width: 100px;
+        height: 22px;
+        border: 0px;
+        vertical-align: top;
+        background-position: left;
+        font-weight: normal;
+    }
+
+    #top-nav {
+        text-align: left;
+        position: relative;
+        top: 0px;
+        left: 35px;
+        width: 100%;
+        max-width: 1500px;
+        height: 100%;
+        min-height: 60px;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #top-nav-right {
+        float: left;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        font-weight: normal;
+    }
+    /* Navigation Bar */
+
+    .navbar-default {
+        color: #0066ff;
+        background-color: #ffffff;
+        border-color: #e9e9e9;
+    }
+
+        .navbar-default .navbar-nav > li > a {
+            color: #0066ff;
+        }
+
+        .navbar-default .navbar-nav > .dropdown > a .caret {
+            border-top-color: #fff;
+            border-bottom-color: #fff;
+        }
+
+        .navbar-default .navbar-brand {
+            color: #fff;
+        }
+
+    .menu-large {
+        position: relative !important;
+        top: 0px;
+        left: 0px;
+    }
+
+    .megamenu {
+        padding: 20px 0px;
+        width: 100%;
+        min-width: 500px;
+    }
+
+        .megamenu > li > ul {
+            padding: 0;
+            margin: 0;
+        }
+
+            .megamenu > li > ul > li {
+                list-style: none;
+            }
+
+                .megamenu > li > ul > li > a {
+                    display: block;
+                    padding: 3px 0px;
+                    clear: both;
+                    font-weight: normal;
+                    line-height: 1.428571429;
+                    color: #0066ff;
+                    white-space: normal;
+                }
+
+        .megamenu > li ul > li > a:hover,
+        .megamenu > li ul > li > a:focus {
+            text-decoration: none;
+            color: #000;
+            background-color: #ffffff;
+        }
+
+        .megamenu.disabled > a,
+        .megamenu.disabled > a:hover,
+        .megamenu.disabled > a:focus {
+            color: #999999;
+        }
+
+            .megamenu.disabled > a:hover,
+            .megamenu.disabled > a:focus {
+                text-decoration: none;
+                background-color: transparent;
+                background-image: none;
+                filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+                cursor: not-allowed;
+            }
+
+        .megamenu.dropdown-header {
+            color: #428bca;
+            font-size: 16px;
+        }
+
+    #worldwide {
+        font-size: 16px;
+        padding: 0 1em;
+        float: left;
+        width: 141px;
+    }
+
+        #worldwide, #worldwide ul {
+            list-style: none;
+            font-size: 16px;
+        }
+
+            #worldwide > li {
+                font-size: 12px;
+                width: 110px;
+                float: left;
+            }
+
+            #worldwide li a {
+                display: block;
+                height: 2em;
+                line-height: 2em;
+                padding: 0 0em;
+                text-decoration: none;
+                width: 121px;
+            }
+
+            #worldwide ul {
+                margin: 0px;
+                padding: 0px;
+                position: absolute;
+                display: none;
+                z-index: 999;
+                font-size: 12px;
+            }
+
+                #worldwide ul li a {
+                    width: 131px;
+                    font-size: 12px;
+                }
+
+            #worldwide li:hover ul.noJS {
+                display: block;
+            }
+    /* Main menu
+        ------------------------------------------*/
+    #worldwide {
+        width: 0px;
+        padding: 0px;
+        margin: 0px;
+        position: relative;
+        top: -4px;
+        left: 160px;
+        font-weight: bold;
+    }
+
+        #worldwide > li > a {
+            color: #fff;
+        }
+
+        #worldwide > li:hover > a {
+            color: #dedede;
+        }
+        /* Submenu
+        ------------------------------------------*/
+        #worldwide ul {
+            background: #fff;
+            border-left: 1px;
+            border-top: 1px;
+            border-right: 1px;
+            border-bottom: 1px;
+            border-style: solid;
+            border-color: #000;
+            padding: 8px;
+            font-weight: normal;
+        }
+
+            #worldwide ul li a {
+                color: #0066ff;
+            }
+
+            #worldwide ul li:hover a {
+                color: #000;
+                background: #fff;
+            }
+
+    .int-flags {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+        padding-right: 2px;
+        max-width: 23px;
+        max-height: 18px;
+    }
+
+    .cart {
+        max-width: 18px;
+        max-height: 14px;
+    }
+
+    .li-flags {
+        font-size: 14px;
+        line-height: 1.5em;
+    }
+
+    .mdlogo {
+        float: left;
+        margin-right: 50px;
+        margin-bottom: 15px;
+        position: relative;
+        top: 10px;
+        left: 0px;
+    }
+
+    #main-nav {
+        width: 100%;
+        position: fixed;
+        z-index: 9999;
+        overflow: visible;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #main-nav-blue {
+        background: #0066cc;
+        width: 100%;
+        padding-top: 10px;
+        position: fixed;
+        z-index: 9999;
+    }
+
+    #main-nav-blue-content {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1500px;
+    }
+
+    #main-nav-blue-text {
+        float: right;
+        font-size: 12px;
+        color: #fff;
+        padding-top: 5px;
+    }
+
+    #main-nav-menu-bg {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        background: #ffffff;
+        -webkit-box-shadow: 0 8px 6px -6px black;
+        -moz-box-shadow: 0 8px 6px -6px black;
+        box-shadow: 0 8px 6px -6px black;
+    }
+
+    #main-nav-search-pos {
+        float: right;
+        position: relative;
+        top: 10px;
+        left: 270px;
+    }
+
+
+    .container-4 {
+        overflow: hidden;
+        width: 200px;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+        .container-4 input#search {
+            width: 200px;
+            height: 30px;
+            background: #e3e3e3;
+            border: none;
+            font-size: 10pt;
+            float: left;
+            color: #000;
+            padding-left: 15px;
+        }
+
+            .container-4 input#search::-webkit-input-placeholder {
+                color: #65737e;
+            }
+
+            .container-4 input#search:-moz-placeholder { /* Firefox 18- */
+                color: #65737e;
+            }
+
+            .container-4 input#search::-moz-placeholder { /* Firefox 19+ */
+                color: #65737e;
+            }
+
+            .container-4 input#search:-ms-input-placeholder {
+                color: #65737e;
+            }
+
+        .container-4 button.icon {
+            border: none;
+            background: #0066cc;
+            height: 30px;
+            width: 50px;
+            color: #fff;
+            opacity: 0;
+            font-size: 10pt;
+            -webkit-transition: all .55s ease;
+            -moz-transition: all .55s ease;
+            -ms-transition: all .55s ease;
+            -o-transition: all .55s ease;
+            transition: all .55s ease;
+        }
+
+        .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon {
+            outline: none;
+            opacity: 1;
+            margin-left: -50px;
+        }
+
+            .container-4:hover button.icon:hover {
+                background: #7B7B7B;
+            }
+
+    .container {
+        position: relative;
+        top: 0px;
+        left: 185px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 1500px;
+    }
+
+
+
+
+    @media (min-width: 990px) {
+        .container {
+            width: 1000px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .container {
+            width: 1000px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .container {
+            width: 1170px;
+        }
+    }
+
+    @media all and (max-width : 1500px) {
+
+        .container {
+            position: relative;
+            top: 0px;
+            left: 50px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 1500px;
+        }
+
+        .container-4 {
+            overflow: hidden;
+            width: 200px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        #main-nav-blue {
+            background: #0066cc;
+            width: 100%;
+            padding-top: 10px;
+            position: fixed;
+            z-index: 9999;
+            padding-left: 4.5%;
+            padding-right: 4.5%;
+        }
+
+
+
+        #main-nav-search-pos {
+            float: right;
+            position: relative;
+            top: 10px;
+            left: -220px;
+        }
+    }
+
+    @media all and (max-width : 1285px) {
+
+        #main-nav-search-pos {
+            float: right;
+            position: relative;
+            top: 10px;
+            left: -160px;
+        }
+
+        .container-4 {
+            overflow: hidden;
+            width: 150px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+            .container-4 input#search {
+                width: 200px;
+                height: 30px;
+                background: #e3e3e3;
+                border: none;
+                font-size: 10pt;
+                float: left;
+                color: #000;
+                padding-left: 15px;
+            }
+
+
+            .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon {
+                outline: none;
+                opacity: 1;
+                margin-left: -100px;
+            }
+    }
+
+    @media all and (max-width : 1230px) {
+
+        #main-nav-search-pos {
+            float: right;
+            position: relative;
+            top: 10px;
+            left: -130px;
+        }
+
+        .container-4 input#search {
+            width: 200px;
+            height: 30px;
+            background: #e3e3e3;
+            border: none;
+            font-size: 10pt;
+            float: left;
+            color: #000;
+            padding-left: 15px;
+        }
+
+
+        .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon {
+            outline: none;
+            opacity: 1;
+            margin-left: -120px;
+        }
+
+        .container-4 {
+            overflow: hidden;
+            width: 120px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+    }
+
+    @media all and (max-width : 1195px) {
+
+        #main-nav-search-pos {
+            float: right;
+            position: relative;
+            top: 10px;
+            left: -100px;
+        }
+
+        .container-4 {
+            overflow: hidden;
+            width: 100px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+
+            .container-4 input#search {
+                width: 200px;
+                height: 30px;
+                background: #e3e3e3;
+                border: none;
+                font-size: 10pt;
+                float: left;
+                color: #000;
+                padding-left: 15px;
+            }
+
+
+            .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon {
+                outline: none;
+                opacity: 1;
+                margin-left: -140px;
+            }
+    }
+
+    @media all and (max-width : 1165px) {
+
+        #main-nav-search-pos {
+            float: right;
+            position: relative;
+            top: 10px;
+            left: -100px;
+            z-index: 99999;
+        }
+
+        .container-4 {
+            overflow: hidden;
+            width: 100px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+
+            .container-4 input#search {
+                width: 200px;
+                height: 30px;
+                background: #e3e3e3;
+                border: none;
+                font-size: 10pt;
+                float: left;
+                color: #000;
+                padding-left: 15px;
+            }
+
+
+            .container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon {
+                outline: none;
+                opacity: 1;
+                margin-left: -140px;
+            }
+    }
+
+    @media all and (max-width : 1150px) {
+        .container {
+            position: relative;
+            top: 0px;
+            left: 35px;
+            width: 100%;
+        }
+
+        #main-nav-search-pos {
+            visibility: hidden !important;
+        }
+    }
+
+    @media all and (max-width : 1120px) {
+
+        .container {
+            position: relative;
+            top: 0px;
+            left: 35px;
+            width: 100%;
+            font-size: 12px;
+        }
+        /* Navigation Bar */
+
+        .navbar-default {
+            color: #0066ff;
+            background-color: #ffffff;
+            border-color: #dedede;
+        }
+
+            .navbar-default .navbar-nav > li > a {
+                color: #0066ff;
+            }
+
+            .navbar-default .navbar-nav > .dropdown > a .caret {
+                border-top-color: #dedede;
+                border-bottom-color: #dedede;
+            }
+
+            .navbar-default .navbar-brand {
+                color: #fff;
+            }
+
+        .menu-large {
+            position: relative !important;
+            top: 0px;
+            left: 0px;
+        }
+
+        .megamenu {
+            padding: 20px 0px;
+            width: 100%;
+            min-width: 500px;
+        }
+
+            .megamenu > li > ul {
+                padding: 0;
+                margin: 0;
+            }
+
+                .megamenu > li > ul > li {
+                    list-style: none;
+                }
+
+                    .megamenu > li > ul > li > a {
+                        display: block;
+                        padding: 3px 0px;
+                        clear: both;
+                        font-weight: normal;
+                        line-height: 1.428571429;
+                        color: #0066ff;
+                        white-space: normal;
+                    }
+
+            .megamenu > li ul > li > a:hover,
+            .megamenu > li ul > li > a:focus {
+                text-decoration: none;
+                color: #000;
+                background-color: #ffffff;
+            }
+
+            .megamenu.disabled > a,
+            .megamenu.disabled > a:hover,
+            .megamenu.disabled > a:focus {
+                color: #999999;
+            }
+
+                .megamenu.disabled > a:hover,
+                .megamenu.disabled > a:focus {
+                    text-decoration: none;
+                    background-color: transparent;
+                    background-image: none;
+                    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+                    cursor: not-allowed;
+                }
+
+            .megamenu.dropdown-header {
+                color: #428bca;
+                font-size: 8px;
+            }
+
+        #top-nav {
+            text-align: left;
+            position: relative;
+            top: 0px;
+            left: 35px;
+            width: 100%;
+            max-width: 1500px;
+            height: 100%;
+            min-height: 60px;
+            color: #000;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dropdown-menu {
+            font-size: 12px;
+        }
+
+        .dropdown-header {
+            font-size: 12px;
+        }
+
+        #main-nav-blue-text {
+            float: right;
+            font-size: 12px;
+            color: #fff;
+            padding-top: 5px;
+        }
+    }
+
+    @media all and (max-width : 922px) {
+        .container {
+            position: relative;
+            top: 30px;
+            left: 35px;
+            width: 100%;
+        }
+
+        #main-nav-menu-bg {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 100%;
+            min-height: 150px;
+            background: #ffffff;
+            -webkit-box-shadow: 0 8px 6px -6px black;
+            -moz-box-shadow: 0 8px 6px -6px black;
+            box-shadow: 0 8px 6px -6px black;
+        }
+    }
+
+    @media all and (max-width : 685px) {
+        #main-nav-blue-content {
+            margin-left: 100px;
+        }
+
+        #main-nav-blue-text {
+            visibility: collapse;
+        }
+    }
+
+    @media all and (max-width : 485px) {
+        .md-logo {
+            position: relative;
+            top: 0px;
+            left: -50px;
+        }
+    }
+</style>
+
+
+
+<script type="text/javascript">
+    // Dropdown Menu Fade    
+    jQuery(document).ready(function () {
+        $(".dropdown").hover(
+            function () {
+                $('.dropdown-menu', this).stop().fadeIn("fast");
+            },
+            function () {
+                $('.dropdown-menu', this).stop().fadeOut("fast");
+            });
+    });
+</script>
+
+<div id="main-nav">
+    <div id="main-nav-blue">
+        <div id="main-nav-blue-content">
+            <a href="/index.htm" title="Melissa Data - Your Partner in Global Data  Quality" alt="Melissa Data - Your Partner in Global Data  Quality">
+                <img src="/../../images/md-logo-white.png" style="float: left; padding-bottom: 15px;" class="md-logo" title="Melissa Data - Your Partner in Global Data  Quality" alt="Melissa Data - Your Partner in Global Data  Quality"></a>
+
+            <div id="main-nav-blue-text">
+                <div style="display: inline">
+                    <a class="white" href="/netcart/order1.aspx" style="padding-right: 15px; padding-left: 15px;">Cart</a>|<a class="white" style="padding-right: 10px; padding-left: 10px;" href='/company/contact.htm'>Contact Us</a>|<span style="padding-right: 140px;"></span>|
+                           <ul id="worldwide">
+                               <li class="li-flags"><a href="#" style="font-size: 12px; font-weight: normal;">Select Country<img src="/../../images/2014/int-usa-flag.png" border="0" class="int-flags" style="padding-left: 15px; width: 100%; height: auto; max-width: 25%; max-height: auto; margin-top: -2px" /></a>
+                                   <ul class="noJS">
+                                       <li class="li-flags"><a href="http://www.melissadata.com.au/">
+                                           <img src="/images/2014/int-au-flag.png" border="0" class="int-flags" />Australia</a></li>
+                                       <!--<li><a href="/fr/index.htm"><img src="/../../images/2014/int-fr-flag.png" border="0" class="int-flags" />France</a></li>-->
+                                       <li class="li-flags"><a href="http://www.melissadata.de/index.htm">
+                                           <img src="/../../images/2014/int-de-flag.png" border="0" class="int-flags" />Germany</a></li>
+                                       <li class="li-flags"><a href="http://www.melissadata.in">
+                                           <img src="/../../images/2014/int-in-flag.png" border="0" class="int-flags" />India</a></li>
+                                       <!--<li><a href="/es/index.htm"><img src="/../../images/2014/int-es-flag.png" border="0" class="int-flags"  />Spain</a></li>-->
+                                       <li class="li-flags"><a href="http://www.melissadata.co.uk/">
+                                           <img src="/../../images/2014/int-uk-flag.png" border="0" class="int-flags" />United Kingdom</a></li>
+                                       <li class="li-flags"><a href="/index.htm">
+                                           <img src="/../../images/2014/int-usa-flag.png" border="0" class="int-flags" />United States</a></li>
+                                   </ul>
+                               </li>
+                           </ul>
+                    &nbsp; &nbsp;  
+                            800-635-4772
+                </div>
+                <p class="userSection" style="display: inline"></p>
+                <script type="text/javaScript">
+                    var rCookie = uCookie("r");
+                    var sCookie = uCookie("s");
+                    var nCookie = uCookie("n");
+                    var iCookie = uCookie("i");
+                    var currentURL = "";
+                    var currentPathName = location.pathname;
+                    switch (currentPathName) {
+                        case "/":
+                            currentURL = "/user/user_account.aspx";
+                            break;
+                        case "/index.htm":
+                            currentURL = "/user/user_account.aspx";
+                            break;
+                        default:
+                            currentURL = decodeURIComponent(location.href);
+                    }
+                    //alert(location.hostname);
+                    //alert(location.href);
+                    //alert(location.pathname);
+                    //alert(currentURL);
+                    //document.write (document.cookie);
+                    if (rCookie == "YES" && sCookie == "IN" && nCookie != "") {
+                        $(document).ready(function () {
+                            $.ajax({
+                                url: "/rest/mdws.svc/creditbalance/?userid=" + iCookie
+                            }).then(function (data) {
+                                var creditBalance = data.CreditBalance
+                                if (data.CreditBalance > 0) {
+                                    creditBalance = creditBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                    $('.userSection').append("&nbsp;&nbsp;|&nbsp;&nbsp;Hello <b>" + decodeURIComponent(nCookie).replace(/\+/g, " ") + "</b>  (<a class=\"white\" href=\"http://www.melissadata.com/dqt/credit-system.htm\">" + creditBalance + " credits</a>)&nbsp;&nbsp;[&nbsp;<a class=\"white\" href=\"https://www.melissadata.com/user/user_account.aspx\">My Account</a>&nbsp;]&nbsp;[&nbsp;<a style='color:#fff' href=\"/user/signout.aspx?src=" + currentURL + "\">Sign out</a>&nbsp;]");
+                                }
+                                else if (data.CreditBalance == 0) {
+                                    $('.userSection').append("&nbsp;&nbsp;|&nbsp;&nbsp;Hello <b>" + decodeURIComponent(nCookie).replace(/\+/g, " ") + "</b>  (<a class=\"white\" href=\"http://www.melissadata.com/dqt/credit-system.htm\">" + creditBalance + " credit</a>)&nbsp;&nbsp;[&nbsp;<a class=\"white\" href=\"https://www.melissadata.com/user/user_account.aspx\">My Account</a>&nbsp;]&nbsp;[&nbsp;<a style='color:#fff' href=\"/user/signout.aspx?src=" + currentURL + "\">Sign out</a>&nbsp;]");
+                                }
+                                else {
+                                    $('.userSection').append("&nbsp;&nbsp;|&nbsp;&nbsp;Hello <b>" + decodeURIComponent(nCookie).replace(/\+/g, " ") + "</b>  (<a  style=\"color:red;font-weight:bold;text-decoration:underline\" href=\"http://www.melissadata.com/dqt/credit-system.htm\">" + creditBalance + " credits</a>)&nbsp;&nbsp;[&nbsp;<a class=\"white\" href=\"https://www.melissadata.com/user/user_account.aspx\">My Account</a>&nbsp;]&nbsp;[&nbsp;<a style='color:#fff' href=\"/user/signout.aspx?src=" + currentURL + "\">Sign out</a>&nbsp;]");
+                                }
+                            });
+                        });
+                        //document.write("&nbsp;&nbsp;&nbsp;Hello <b>" + decodeURIComponent(n).replace(/\+/g, " ") + "<\/b>&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;<a style='color:#fff' href=/user/signout.aspx?src=" + currentURL + ">Sign out<\/a>, <a class=white  href=https://www.melissadata.com/user/user_account.aspx>My Account<\/a>&nbsp;&nbsp;");
+                    }
+                    else if (currentURL.indexOf("signin.aspx") == -1) {
+                        $('.userSection').append("&nbsp;&nbsp;&nbsp;[&nbsp;<a class=headertop style='color:#fff' href=https://www.melissadata.com/user/signin.aspx?src=" + currentURL + ">Sign In<\/a>&nbsp;]");
+                        //document.write("<a class=headertop style='color:#fff' href=https://www.melissadata.com/user/signin.aspx?src=" + currentURL + ">Sign In<\/a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                    }
+                    //if (r == "YES" && s == "IN" && n != "") document.write("&nbsp;&nbsp;&nbsp;Hello <b>" + decodeURIComponent(n).replace(/\+/g, " ") + "<\/b>&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;<a style='color:#fff' href=/user/signout.aspx?src=" + currentURL + ">Sign out<\/a>, <a class=white  href=https://www.melissadata.com/user/user_account.aspx>My Account<\/a>&nbsp;&nbsp;"); else if (currentURL.indexOf("signin.aspx") == -1) document.write("<a class=headertop style='color:#fff' href=https://www.melissadata.com/user/signin.aspx?src=" + currentURL + ">Sign In<\/a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                    //document.write(uCookie("s");
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- Start of  /_borders/nav/main-content.asp -->
+
+    <div id="main-nav-menu-bg">
+
+    <div class="navbar navbar-default navbar-static-top" >
+     <div id="top-nav">
+     </div>
+          <div class="container">      
+                      <div id="main-nav-search-pos">
+                <form class="search" method="get" action="/cgi-bin/search.asp">
+          			
+    <div class="container-4">
+        <input type="search" id="search" placeholder="Search..." name="indata" />
+        <button class="icon"><i class="fa fa-search"></i></button>
+    </div>       
+    </form>
+    </div>
+                
+            <div class="navbar-header">
+            
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            
+            <div class="navbar-collapse collapse">
+			    <ul class="nav navbar-nav">
+                
+			    <li class="dropdown menu-large">
+				    <a href="/dqt/data-quality.html" class="dropdown-toggle" ><strong>Data Quality</strong> <b class="caret"></b></a>		
+				    <ul class="dropdown-menu megamenu row">
+					    <li class="col-sm-7">
+						    <ul>
+							    <li class="dropdown-header"><a href="/dqt/solutions/index.html" class="headertop"><strong>Solutions</strong></a></li>
+							    <li><a href="/dqt/solutions/address-and-contact-data-verify.html">Address & Contact Data Verify</a></li>
+							    <li><a href="/dqt/solutions/data-enrich-and-geocode.html">Data Enrich & Geocode</a></li>
+							    <li><a href="/dqt/solutions/data-dedupe-and-golden-record.html">Data Dedupe & Golden Record</a></li>
+                                <li><a href="/dqt/rightfielder.htm">Data Parse & Cleanse</a></li>
+                                 <li><a href="/dqt/solutions/data-profile-and-monitor.html">Data Profile & Monitor</a></li>
+                                 <li class="divider"></li>
+							    <li class="dropdown-header"><a href="/dqt/integrations.html"  class="headertop"><strong>Integrations</strong></a></li>
+							    <li><a href="/dqt/listware.htm">Listware</a></li>
+							    <li><a href="/dqt/microsoft-dynamics-crm.htm">Microsoft Dynamics CRM</a></li>
+							    <li><a href="/dqt/listware.htm">Microsoft Excel</a></li>
+							    <li><a href="/data-quality-ssis/index.htm">Microsoft SQL Server</a></li>
+							    <li><a href="/dqt/integrations.html#oracle">Oracle</a></li>
+							    <li><a href="/data-quality-pentaho/index.htm">Pentaho</a></li>
+							    <li><a href="/dqt/listware.htm">Salesforce</a></li>
+							    <li><a href="/dqt/integrations.html">All Integrations </a></li>                     
+                                 
+						    </ul>
+					    </li>
+                        
+					    <li class="col-sm-5">
+						    <ul>
+							    <li class="dropdown-header"><a href="/dqt/technologies-2015.htm"  class="headertop"><strong>Technologies</strong></a></li>
+							    <li><a href="/dqt/technologies-2015.htm#API">On-Premise APIs</a></li>
+							    <li><a href="/dqt/technologies-2015.htm#cloud">Cloud Services</a></li>
+							    <li><a href="/dqt/technologies-2015.htm#desktop">Desktop Software</a></li>
+							    <li class="divider"></li>
+							    <li ><a href="/dqt/reference-data.htm">Reference Data</a></li>
+							    <li class="divider"></li>
+							    <li ><a href="/services/consulting.htm">Professional Services</a></li>
+							    <li class="divider"></li>
+							    <li ><a href="/products/index-2015.html#Data Quality">Product Index</a></li>                                                          
+						    </ul>
+					    </li>
+
+				    </ul>
+
+			    </li>
+			    <li class="dropdown menu-large">
+				    <a href="/dm/index.htm" class="dropdown-toggle"><strong>Direct Mail </strong><b class="caret"></b></a>			
+				    <ul class="dropdown-menu megamenu row">
+					    <li class="col-sm-5">
+						    <ul>
+							    <li class="dropdown-header"><a href="/dm/mailing-lists/index.htm" class="headertop"><strong>Mailing Lists</strong></a></li>
+							    <li><a href="/dm/mailing-lists/business.htm">Business</a></li>
+							    <li><a href="/dm/mailing-lists/consumers.htm">Consumer</a></li>
+                                <li><a href="/dm/mailing-lists/newhomeowners.htm">New Homeowners</a></li>   
+                                <li><a href="/dm/mailing-lists/newmovers.htm">New Movers</a></li>                                                                                      
+							    <li><a href="/dm/mailing-lists/propertyowners.htm">Property</a></li>
+								<li><a href="/dm/mailing-lists/saturation.htm">Saturation / Occupant </a></li>                                
+							    <li><a href="/dm/mailing-lists/index.htm#Speciality">Specialty Lists</a></li>
+                                 <li class="divider"></li>
+                                 <li class="dropdown-header"><a href="/leadgen/index.htm" class="headertop"><strong>List Brokers</strong></a></li>
+                                 <li><a href="/leadgen/index.htm">LeadGen APIs</a></li>    
+						    </ul>
+					    </li>
+					    <li class="col-sm-6">
+						    <ul>
+                        	    <li class="dropdown-header"><a href="/dm/mailing-software/index.htm" class="headertop"><strong>Mailing Solutions</strong></a></li>
+							    <li><a href="/dm/mailing-software/index.htm">Mailing Software</a></li>
+							    <li><a href="https://www.melissadata.com/dqt/matchup.htm">Dedupe Software</a></li>
+							    <li><a href="/dm/move-update.html ">Move Update/Change-of-Address(US/Canada)</a></li>
+							    <li class="divider"></li>
+                                <li><a href="/products/index-2015.html#Direct Mail">Products Index</a></li>
+						    </ul>
+					    </li>
+
+				    </ul>
+
+			    </li>
+  			    <li class="dropdown menu-large">
+				    <a href="/dm/data-services/index.htm"><strong>Data Services </strong><b class="caret"></b></a>				
+				    <ul class="dropdown-menu megamenu row">
+					    <li class="col-sm-6">
+						    <ul>
+							    <li class="dropdown-header"><a href="/dm/data-services/data-enhancements.html" class="headertop"><strong>Data Enhancements</strong></a></li>
+							    <li><a href="/dm/data-services/demographic-append.htm">Demographic Append</a></li>		
+							    <li><a href="/dm/data-services/email-append.htm">Email Append</a></li>
+                                <li><a href="/dm/data-services/geographic-append.htm">Geographic Append</a></li>	
+							    <li><a href="/dm/data-services/phone-append.htm">Phone Append</a></li>
+                                <li><a href="/dm/data-services/property-data.htm">Property Append</a></li>                           
+                                <li><a href="/dm/data-services/reverse-phone-append.htm">Reverse Phone Append</a></li>
+                                <li><a href="/dqt/social-media-service.htm">Social Media Append</a></li>                     
+                                <li><a href="/dm/data-enhancements.html">All Enhancements</a></li>							
+						    </ul>
+					    </li>
+					    <li class="col-sm-6">
+						    <ul>
+							    <li class="dropdown-header"><a href="/dm/data-hygiene.html" class="headertop"><strong>Data Hygiene</strong></a></li>
+							    <li><a href="/dm/data-services/cass-processing.htm">CASS Processing</a></li>
+							    <li><a href="/dm/data-services/ncoa.htm">Change of Address Processing</a></li>
+                                <li><a href="/dm/data-services/deceased-suppression.htm">Deceased Suppression</a></li>
+                                <li><a href="/dm/data-services/duplicate-elimination.htm">Duplication Identification</a></li>
+							    <li><a href="/dm/data-services/global-address-verify.htm">Global Address Verification</a></li>
+                                <li><a href="/dm/data-services/data-hygiene.html">All Services</a></li>
+							    <li class="divider"></li>
+							    <li><a href="/products/index-2015.html#Data Services">Services Index</a></li>
+						    </ul>
+					    </li>
+				    </ul>
+
+			    </li>
+  			    <li class="dropdown menu-large">
+				    <a href="/dqt/industries.htm" ><strong>Industries</strong> <b class="caret"></b></a>			
+				    <ul class="dropdown-menu megamenu row">
+					    <li class="col-sm-5">
+						    <ul>
+							    <li class="dropdown-header"><a href="/dqt/industries.htm" class="headertop"><strong>Industries</strong></a></li>
+							    <li><a href="/dqt/banking.htm">Banking</a></li>
+							    <li><a href="/dqt/crm-call-center-solutions.htm">CRM & Call Centers</a></li>
+							    <li><a href="/free-trials/direct-marketing.htm">Direct Marketing</a></li>
+							    <li><a href="/dqt/ecommerce.htm">Ecommerce</a></li>
+							    <li><a href="/dqt/gis-lbs-solutions.htm">GIS & LBS</a></li>
+							    <li><a href="/dqt/government.htm">Government & Public Sector</a></li>
+							    <li><a href="/dqt/healthcare.htm">Healthcare</a></li>
+						    </ul>
+					    </li>
+					    <li class="col-sm-5">
+						    <ul>
+							    <li><a href="/dqt/hospitality-and-travel.htm">Hospitality & Travel</a></li>
+							    <li><a href="/dqt/insurance.htm">Insurance</a></li>
+                                <li><a href="/dqt/mail-and-shipping.htm">Mail and Shipping</a></li>
+							    <li><a href="/dqt/media-companies-and-publishers.htm">Media Companies & Publishers</a></li>
+							    <li><a href="/dqt/telecommunications.htm">Telecommunications</a></li>
+							    <li><a href="/dqt/universities-and-colleges.htm">Universities / Colleges</a></li>
+							    <li><a href="/dqt/universities.htm">Universities / Non-profits</a></li>
+						    </ul>
+					    </li>
+				    </ul>
+
+			    </li>
+ 			    <li class="dropdown menu-large">
+				    <a href="/tech/global-support-centers.htm" class="dropdown-toggle" ><strong>Support</strong> <b class="caret"></b></a>	
+				    <ul class="dropdown-menu megamenu row">
+					    <li class="col-sm-6">
+						    <ul>
+							    <li class="dropdown-header"><strong>Support Services</strong></li>
+							    <li><a href="/tech/global-support-centers.htm">Global Support Centers</a></li>
+							    <li><a href="http://wiki.melissadata.com/index.php?title=Welcome">Product Support Wiki</a></li>
+							    <li><a href="/service/address_submission.aspx">Address Coding Support</a></li>
+							    <li class="divider"></li>
+							    <li class="dropdown-header"><strong>Training</strong></li>
+							    <li><a href="/services/training.htm">Certified Integrator Program</a></li>
+							    <li class="divider"></li>
+							    <li><a href="http://wiki.melissadata.com/index.php?title=Result_Codes">Result Codes</a></li>
+                                <li><a href="http://wiki.melissadata.com/index.php?title=Country_Verification_Levels">Address Coverage by Country</a></li>
+						    </ul>
+					    </li>
+					    <li class="col-sm-5">
+						    <ul>
+							    <li class="dropdown-header"><strong>Professional Services</strong></li>
+							    <li><a href="/services/consulting.htm">Consulting</a></li>
+							    <li><a href="/mvp/md-mvps.htm">Accredited Partners</a></li>
+							    <li><a href="/dqt/data-quality-score.asp">Free Data Checkup</a></li>
+						    </ul>
+					    </li>
+				    </ul>
+
+			    </li>
+  			    <li class="dropdown menu-large">
+				    <a href="/resources/whitepapers.htm" class="dropdown-toggle"><strong>Resources</strong><b class="caret"></b>	</a>	
+				    <ul class="dropdown-menu megamenu row">
+					    <li class="col-sm-5">
+						    <ul>
+							    <li><a href="/resources/articles.htm">Articles</a></li>
+							    <li><a href="/resources/case-studies.htm">Case Studies</a></li>
+							    <li><a href="/resources/catalog.htm">Catalogs/Magazines</a></li>
+							    <li><a href="/resources/communities.htm">Communities</a></li>
+							    <li><a href="/resources/data-sheets.htm">Data Sheets & Brochures</a></li>
+							    <li><a href="/resources/webinars.htm">Webinars</a></li>
+							    <li><a href="/resources/whitepapers.htm">White Papers / eBooks</a></li>
+							    <li class="divider"></li>
+							    <li class="dropdown-header"><strong>Newsletters</strong></li>
+							    <li><a href="/resources/newsletters.htm">eNewsletters</a></li>
+							    <li><a href="/resources/newsletters.htm">Newsletters Subscription</a></li>
+							    <li><a href="/resources/newsletters.htm">Product Newsletters</a></li>
+						    </ul>
+					    </li>
+
+					    <li class="col-sm-6">
+						    <ul>
+							    <li class="dropdown-header"><strong>Solutions</strong></li>
+							    <li><a href="/resources/big-data-quality.htm">Big Data Quality</a></li>
+							    <li><a href="/resources/data-quality.htm">Data Quality</a></li>
+							    <li><a href="/resources/data-integration.htm">Data Integration</a></li>
+							    <li><a href="/resources/data-governance.htm">Data Governance</a></li>
+							    <li><a href="/resources/etl-data.htm">Extract, Transform, &amp; Load (ETL)</a></li>
+							    <li class="divider"></li>
+							    <li class="dropdown-header"><strong>Tips</strong></li>
+							    <li><a href="/resources/email-deliverability-in-5-steps.pdf">Email Deliverability in 5 Steps</a></li>
+                                <li><a href="/resources/personator-fraud-infographic.pdf">Fighting Online Fraud Infographic</a></li>
+							    <li><a href="/resources/5-steps-to-nonprofit-omnichannel-marketing-success.pdf">Nonprofit Omnichannel Marketing Success</a></li>
+							    <li><a href="/dm/resources/tips-for-saturation-mailing.htm">Tips For Best Saturation Mailing</a></li>
+						    </ul>
+					    </li>
+				    </ul>
+
+			    </li>
+				    <li class="dropdown menu-large"><a href="/lookups/index.htm" ><strong>Lookups</strong></a></li>
+      			    <li class="dropdown menu-large">
+				    <a href="/company/about.htm" class="dropdown-toggle"><strong>Company</strong> <b class="caret"></b></a>			
+				    <ul class="dropdown-menu megamenu row">
+					    <li class="col-sm-5">
+						    <ul>
+							    <li class="dropdown-header"><a href="/company/about.htm" class="headertop"><strong>About Melissa Data</strong></a></li>
+							    <li><a href="/company/customers.htm">Customers</a></li>
+							    <li><a href="/company/management.htm">Management Team</a></li>
+							    <li><a href="/company/server-locations-and-uptime.htm">Server Locations & Uptime</a></li>
+							    <li><a href="/company/soc-2-report.htm">SOC 2 Report</a></li>
+							    <li class="divider"></li>
+							    <li class="dropdown-header"><a href="/company/careers.htm">Careers</a></li>
+                                <li class="divider"></li>
+							    <li><a href="/company/events.htm" class="headertop"><strong>News & Events</strong></a></li>
+							    <li><a href="/company/press.htm">Press Releases</a></li>
+							    <li><a href="/company/events.htm">Events & Webinars</a></li>
+							    <li class="divider"></li>
+							    <li><a href="/company/contact.htm">Contact / Locations</a></li>
+						    </ul>
+					    </li>
+					    <li class="col-sm-6">
+						    <ul>
+							    <li class="dropdown-header"><a href="/company/partners.htm" class="headertop"><strong>Partners</strong></a></li>
+							    <li><a href="/company/partners.htm">Our Partners</a></li>
+							    <li><a href="/partners/application.asp">Become a Partner</a></li>
+							    <li><a href="/partners/programs.htm">OEM & Referral Programs</a></li>
+							    <li><a href="/mvp/index.htm">MVP Program</a></li>
+						    </ul>
+					    </li>
+				    </ul>
+			    </li>                                                                   
+		    </ul>
+		    </div>
+          </div>
+        </div>
+     </div> 
+
+
+<!-- End of  /_borders/nav/main-content.asp -->
+</div>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+
+<!--End of /_borders/nav/main-master.asp-->
+
+<div align="center" style="padding-top:150px;">
+
+<!--TitleBorder in Shared.asp -->
+<table width="950" cellspacing=0 border=0 bgcolor="#FFFFFF"><tr><td align=left><font color="#0066cc" size="5">&nbsp;Lookup Daily Limit</font></td></tr></table>
+<!--TitleBorder End-->
+
+	<table border="0" width="744" cellspacing="0" cellpadding="0">
+		<tr><td align="center"><br/>
+			
+				<b><font color="#336699" size="3">You have reached your limit of <font color="red">80</font> Lookups for today as an Un-Registered User. <br />You have three options:</font></b><br/>
+			
+		</td></tr>
+		
+    </table>
+
+	<form action="subscribe.asp" method="post">
+
+	
+        <table align="center" width="744" cellspacing="0" cellpadding="5" style="border-right: #b5c7de 1px solid; border-top: #b5c7de 1px solid; border-left: #b5c7de 1px solid; border-bottom: #b5c7de 1px solid;">
+ 		    <tr><td colspan="2"><b>1.</b> <a href="/user/signin.aspx">Click here</a> to <b>Sign In</b> to your account.<br/></td></tr>
+
+            <tr><td colspan="2"><b>2.</b> <a href="https://www.melissadata.com/user/new_user.aspx">Click here</a> to <b>Register</b> as a user. It is free and your Lookups is increased to <b>300 per day.<br/></td></tr>
+            <tr><td colspan="2"><b>3.</b> <b>Come back Tomorrow</b>. Your Lookup count will be reset to zero at midnight Pacific Time.<br/></td></tr></table>
+
+	
+
+    </form>
+
+    <table align="center" width="744" cellspacing="0" cellpadding="5" bgcolor="whitesmoke" style="border-right: #b5c7de 1px solid; border-top: #b5c7de 1px solid; border-left: #b5c7de 1px solid; border-bottom: #b5c7de 1px solid;">
+        <tr><td align="center"><b>Corporate Multi-User Lookups Program</b><br /></td></tr>
+        <tr><td><a href="/bannerad/private-label-lookup.asp">Click here</a> to learn more about our new private label Lookups.  You get your company logo at the
+        of the top of the Lookup pages, no advertisements and fast response.  Make Lookups part of your company today.
+        </td></tr>
+    </table><center>ID:&nbsp;&nbsp;&nbsp; IC:0&nbsp;&nbsp;&nbsp;LL:U</center>
+<br /><br />
+<font color=#a1a1a1>Your IP Address is 108.16.250.3 | LookupLevel U | Count 0</font>
+<style type="text/css">
+<!--
+.Feet {FONT-SIZE: 8pt; 
+	font-family:Trebuchet MS,sans-serif; 
+	BACKGROUND-COLOR: #FFFFFF; 
+}
+
+/* Footer links */
+A.feet {text-decoration: none}
+A.feet:link {color:#0066FF}
+A.feet:visited {color:#0066FF}
+A.feet:hover {color:#000000; background-color: #EEEEEE;}
+A.feet:active {color:Red;}
+}
+-->
+</style>
+
+
+<hr / width='744'>
+<table border="0" cellpadding="0" cellspacing="0" width="744" class='feet'>
+	<tr><td align="center">		
+	<a href="/resources/newsletters.htm">Newsletters</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+    <a  href="/cgi-bin/help.asp?product=products+page">Help</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; 
+	<a  href="/company/about.htm">Company</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+	<a href="/press/index.htm">Press Room</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+	<a  href="/partners/index.htm">Partners</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+	<a  href="/sitemap.htm">Site Map</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+	<a  href="/privacy.htm">Privacy</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="/copyright.htm">Trademarks</a><br/><br/>
+    <a href="/dqt/index.htm">Data Quality Tools</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+	<a href="/software.htm">Software</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+	<a href="/lists.html">Mailing Lists</a>&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+	<a href="/listservices/listservices.htm">Data Enhancement Services</a>
+	<br/><br/>
+	<font color="#c0c0c0">&copy; Copyright 2016 by Melissa DATA Corp. All trademarks used as property of their owners.</font><br/><br/>
+	</td></tr>
+</table>
+
+
+
+
+</div>
+</body>
+</html>
