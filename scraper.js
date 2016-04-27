@@ -1,16 +1,21 @@
 var request = require("request"),
 	cheerio = require("cheerio"),
 	json2csv = require("json2csv"),
+	_ = require('lodash'),
 	Horseman = require('node-horseman'),
-	horseman = new Horseman(),
+	horseman = new Horseman({
+		timeout: 10000
+	}),
 	fs = require('fs'),
-	page = 0;
+	page = 15;
 
-function filterByTaxData (addresses, taxData) {
-	var taxData = taxData ? taxData : [];
+function getTaxData(addresses) {
+	var taxData = [],
+		taxFields = ['address', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
+		address = addresses[0].number + ' ' + addresses[0].street;;
 
-	if(addresses.length == 0) {
-		json2csv({ data: taxData, fields: ['address', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'] }, function(err, csv) {
+	function writeCsv() {
+		json2csv({ data: taxData, fields: taxFields}, function(err, csv) {
 			if (err) console.log(err);
 			fs.writeFile('taxes.csv', csv, function(err) {
 				if (err) throw err;
@@ -22,44 +27,96 @@ function filterByTaxData (addresses, taxData) {
 		return;
 	}
 
-	var address = addresses[0].number + ' ' + addresses[0].street;
+	function extractData() {
+		console.log('extractAddress()');
 
-	console.log('processing taxes for ' + address);
+		return horseman.evaluate(function() {
+			var rows = $('tr'),
+				data = {};
+
+			for(var i=0; i<rows.length; i++) {
+				var cells = $(rows[i]).children(),
+					year = $(cells[0]).text();
+
+				if(!isNaN(parseInt(year))) {
+					var totalTax = parseFloat($(cells[5]).text().substring(1));
+
+					if(totalTax > 0) {
+						data[year] = $(cells[5]).text();
+					}
+  				}
+			}
+
+			return data;
+		});
+	}
+
+	function scrape() {
+		return new Promise(function(resolve, reject) {
+			console.log('processing taxes for ' + address);
+
+			return extractData()
+			.then(function(data) {
+				console.log('data: ' + JSON.stringify(data));
+
+				if(!_.isEmpty(data)) {
+					data.address = address;
+					taxData.push(data);	
+				}
+				
+				addresses.shift();
+
+				if(addresses.length > 0) {
+					address = addresses[0].number + ' ' + addresses[0].street;
+
+					return horseman
+							.type('input[name="ctl00$BodyContentPlaceHolder$SearchByAddressControl$txtLookup"]', address)
+					  		.click('input[name="ctl00$BodyContentPlaceHolder$SearchByAddressControl$btnLookup"]')
+					  		.waitForNextPage()
+					  		.then(scrape)
+				}
+			})
+			.then(resolve)
+			.catch(function(e) {
+				console.log('error: ' + e);
+			});
+		});
+	}
 
 	horseman
-  		.userAgent('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0')
-  		.open('http://www.phila.gov/revenue/realestatetax/')
+		.userAgent('Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)')
+		.open('http://www.phila.gov/revenue/realestatetax/')
   		.type('input[name="ctl00$BodyContentPlaceHolder$SearchByAddressControl$txtLookup"]', address)
   		.click('input[name="ctl00$BodyContentPlaceHolder$SearchByAddressControl$btnLookup"]')
   		.waitForNextPage()
-  		.html('table.grdRecords')
-  		.then(function(html) {
-  			var $ = cheerio.load(html),
-  				rows = $('tr'),
-  				data = {
-  					address: address
-  				};
-
-  			for(var i=0; i<rows.length; i++) {
-  				var $$ = cheerio.load(rows[i]),
-  					cells = $$('td'),
-  					year = $$(cells[0]).text();
-
-  				if(!isNaN(parseInt(year))) {
-  					data[year] = $$(cells[5]).text();
-  				}
-  			}
-
-  			taxData.push(data);
-
-			addresses.shift();
-			filterByTaxData(addresses, taxData);
-  		})
-  		.close();
+  		.then(scrape)
+  		.finally(function() {
+  			writeCsv()
+  			horseman.close();
+  		});
 }
 
-//TODO temp
-filterByTaxData([{number:'1300',street:'N Orianna St'}]); //, {number:'1302',street:'N Orianna St'}, {number:'1304',street:'N Orianna St'}, {number:'1306',street:'N Orianna St'}
+function queueTaxScrapers(data) {
+	// break up address data into chunks, get tax data for each chunk using separate proxy/user agent
+	var chunkSize = 30;
+	//TODO - temporarily just getting the first 30 results until I figure out how to call the next set after getTaxData returns..
+	getTaxData(data.splice(0, chunkSize));
+
+	/*,
+		promise = new Promise(function(resolve, reject) {
+			return getTaxData(data.splice(0, chunkSize))
+					.then(resolve);
+		});
+
+	promise
+		.then(function(data) {
+			console.log(JSON.stringify('tax data: ' + taxData));
+		})
+		.catch(function(e) {
+			console.log('tax scraper error: ' + e);
+		});
+	*/
+}
 
 function getAddresses (page, addresses) {
 	var addresses = addresses ? addresses : [],
@@ -81,7 +138,7 @@ function getAddresses (page, addresses) {
 					});
 				});
 
-	    		filterByTaxData(addresses);
+	    		queueTaxScrapers(addresses);
 	    		return;
 	    	}
 
@@ -115,4 +172,4 @@ function getAddresses (page, addresses) {
 	});
 }
 
-//getAddresses(page);
+getAddresses(page);
