@@ -61,6 +61,7 @@ function getTaxData(addresses) {
 					  		.then(scrape);
 					}, 1000);
 				} else {
+					writeCsv(taxData);
 					resolve();
 				}
 			})
@@ -78,7 +79,12 @@ function getTaxData(addresses) {
   		.waitForNextPage()
   		.then(scrape)
   		.finally(function() {
-  			writeCsv(taxData);
+  			//note, this isn't being hit when we have multiple addresses. I think it has something to do with how the 
+  			//promise is being resolved, but can't figure it out. Moving the call to writeCsv() before resolve() is called
+  			//is a workaround.
+  			console.log('finally');
+  		},function() {
+  			console.log('notify callback');
   		});
 }
 
@@ -117,7 +123,7 @@ function getAddresses (page, addresses) {
 					});
 				});
 
-	    		getTaxData(addresses.splice(0,1)); //TODO limiting number of addresses during testing
+	    		getTaxData(addresses.splice(0,3)); //TODO limiting number of addresses during testing
 	    		return;
 	    	}
 
